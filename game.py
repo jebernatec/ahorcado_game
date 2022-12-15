@@ -41,9 +41,9 @@ def show_word():
     
     for letter in list_word:
         if letter["guessed"]:
-            print(letter[" letter "], end="")
+            print(letter["letter"], end="")
         else:
-            print(" _ ", end="")
+            print("_", end="")
         
     print("")
 
@@ -105,6 +105,8 @@ def show_ahorcado():
 
 def discover_word(letter):
 
+    global lifes
+
     if letter in writed_words:
         return
     else:
@@ -124,24 +126,46 @@ def letter_is_in_word(l):
             return True
     return False
     
+def win():
+    for letter in list_word:
+        if not letter["guessed"]:
+            return False
+    return True
+
 
 def main():
     s_g = select_group()
     w_s = select_word(s_g)
     word_maker(w_s)
-    show_ahorcado()
-    show_word()
-    discover_word(input("enter a letter >>> "))
+    while True:
+        show_ahorcado()
+        show_word()
+        discover_word(input("enter a letter >>> "))
 
-    if lifes <=0:
-        print("you lost, the word was", w_s)
-        return
-    if win():
-        print("victory")
-        return
+        if lifes <=0:
+            print("you lost, the word was", w_s)
+            return
+        if win():
+            print("victory, the word is ", end="")
+            show_word()
+            return
 
     
+def run():
+    menu = ''' Menu
+    what version would do you like to play?
+    1. ahorcado version 4k
+    2. ahorcado versión arcade
+    '''
 
-main()
+    choise = int(input(menu + ">>>"))
+
+    if choise <= 0 or choise > 2:
+        exit()
+    elif choise == 1:
+        main()
+    
+if __name__ == "__main__":
+    run()
 
 
