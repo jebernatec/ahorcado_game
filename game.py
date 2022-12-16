@@ -151,21 +151,7 @@ def main():
             return
 
     
-def run():
-    menu = ''' Menu
-    what version would do you like to play?
-    1. ahorcado version 4k
-    2. ahorcado versión arcade
-    '''
-
-    choise = int(input(menu + ">>>"))
-
-    if choise <= 0 or choise > 2:
-        exit()
-    elif choise == 1:
-        main()
-    
 if __name__ == "__main__":
-    run()
+    main()
 
 
