@@ -152,6 +152,8 @@ def main():
 
     
 if __name__ == "__main__":
+    print("wlcome to the game")
+    print("el ahorcado en español, no se como se llama en igles sorry XD")
     main()
 
 
